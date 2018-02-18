@@ -38,3 +38,19 @@ kubectl port-forward fullcontact-deployment-86b489dc76-f2wrp --namespace=default
 ```
 
 The application with kubernetes will be accessible at http:127.0.0.1:5000 
+
+Now Kubernetes Setup for Prometheus (or) Grafana -  https://github.com/giantswarm/kubernetes-prometheus
+
+```bash
+$ kubectl apply \
+  --filename https://raw.githubusercontent.com/giantswarm/kubernetes-prometheus/master/manifests-all.yaml
+  ```
+Check kubectl monitoring
+```bash
+$ kubectl get pods -n monitoring
+```
+kubectl port-forward for prometheus metrics
+```bash
+$  kubectl port-forward prometheus-core-79648bf5cc-4zhq5 --namespace=monitoring 9090:9090
+```
+The application for promethus Check http://127.0.0.1:9090/graph
